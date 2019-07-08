@@ -8,13 +8,19 @@ class BasicPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: <Widget>[
-          _createImage(),
-          _createTitleRow(),
-          _createActionsRow(),
-          _createDescriptionText()
-        ],
+      body: SingleChildScrollView(
+        child: Column(
+          children: <Widget>[
+             _createImage(),
+            _createTitleRow(),
+            _createActionsRow(),
+            _createDescriptionText(),
+            _createDescriptionText(),
+            _createDescriptionText(),
+            _createDescriptionText(),
+            _createDescriptionText(),
+          ],
+        ),
       )
     );
   }
@@ -25,25 +31,27 @@ class BasicPage extends StatelessWidget {
   }
 
   Widget _createTitleRow() {
-    return Container(
-            padding: EdgeInsets.symmetric(horizontal: 30.0, vertical: 20.0),
-            child: Row(
-              children: <Widget>[
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Text("Beautiful bridge and trees", style: this.titleStyle),
-                      SizedBox(height: 7.0,),
-                      Text("Stuttgart, Deutschland", style: this.subtitleStyle),
-                    ],
+    return SafeArea(
+          child: Container(
+              padding: EdgeInsets.symmetric(horizontal: 30.0, vertical: 20.0),
+              child: Row(
+                children: <Widget>[
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        Text("Beautiful bridge and trees", style: this.titleStyle),
+                        SizedBox(height: 7.0,),
+                        Text("Stuttgart, Deutschland", style: this.subtitleStyle),
+                      ],
+                    ),
                   ),
-                ),
-                Icon(Icons.star, color: Colors.red, size: 30.0),
-                Text("41", style: TextStyle(fontSize: 20.0))
-              ],
+                  Icon(Icons.star, color: Colors.red, size: 30.0),
+                  Text("41", style: TextStyle(fontSize: 20.0))
+                ],
+              ),
             ),
-          );
+    );
   }
 
   Widget _createActionsRow() {
@@ -69,11 +77,13 @@ class BasicPage extends StatelessWidget {
 
 
   Widget _createDescriptionText() {
-    return Container(
-      padding: EdgeInsets.symmetric(horizontal: 40.0, vertical: 20.0),
-      child: Text(
-        'Lorem veniam consectetur enim adipisicing magna cupidatat in occaecat aliqua dolor. Id esse quis pariatur laborum ad duis voluptate ea labore est nostrud. Tempor ad pariatur nulla cillum ipsum do id culpa non exercitation esse ullamco.',
-        textAlign: TextAlign.justify,
+    return SafeArea(
+          child: Container(
+        padding: EdgeInsets.symmetric(horizontal: 40.0, vertical: 20.0),
+        child: Text(
+          'Lorem veniam consectetur enim adipisicing magna cupidatat in occaecat aliqua dolor. Id esse quis pariatur laborum ad duis voluptate ea labore est nostrud. Tempor ad pariatur nulla cillum ipsum do id culpa non exercitation esse ullamco.',
+          textAlign: TextAlign.justify,
+        ),
       ),
     );
   }
