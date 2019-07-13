@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_ui_training/src/pages/basic_page.dart';
 import 'package:flutter_ui_training/src/pages/scroll_page.dart';
 import 'package:flutter_ui_training/src/pages/tiles_page.dart';
@@ -10,6 +11,12 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+
+    // Status bar in white
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light.copyWith(
+      statusBarColor: Colors.white
+    ));
+
     return MaterialApp(
       title: 'UI Training',
       initialRoute: 'tiles',

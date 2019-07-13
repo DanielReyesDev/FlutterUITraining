@@ -9,8 +9,17 @@ class TilesPage extends StatelessWidget {
       body: Stack(
         children: <Widget>[
           _createBackground(),
+          SingleChildScrollView(
+            child: Column(
+              children: <Widget>[
+                _createTitles(),
+                _createTiles()
+              ],
+            ),
+          )
         ],
-      )
+      ),
+      bottomNavigationBar: _createBottomNavigationbar(context)
     );
   }
 
@@ -58,4 +67,96 @@ class TilesPage extends StatelessWidget {
     );
   }
 
+  Widget _createTitles() {
+    return SafeArea(
+      child: Container(
+        padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 20.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Text("Classify Transaction", style: TextStyle(color: Colors.white, fontSize: 30.0, fontWeight: FontWeight.bold),),
+            SizedBox(height: 10.0,),
+            Text("Classify this transaction into a particular category", style: TextStyle(color: Colors.white, fontSize: 18.0),),
+            
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _createBottomNavigationbar(BuildContext context) {
+    return Theme(
+      data: Theme.of(context).copyWith(
+        canvasColor: Color.fromRGBO(55, 57, 84, 1.0),
+        primaryColor: Colors.pinkAccent,
+        textTheme: Theme.of(context).textTheme.copyWith(caption: TextStyle(color: Color.fromRGBO(116, 117, 152, 1.0)))
+      ),
+      child: BottomNavigationBar(
+        items: [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.calendar_today, size: 30.0,),
+            title: Container()
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.bubble_chart, size: 30.0,),
+            title: Container()
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.supervised_user_circle, size: 30.0,),
+            title: Container()
+          )
+        ],
+      ),
+    );
+    
+  }
+
+  Widget _createTiles() {
+    return Table(
+      children: [
+        TableRow(
+          children: [
+            _createTile(),
+            _createTile(),
+          ]
+        ),
+        TableRow(
+          children: [
+            _createTile(),
+            _createTile(),
+          ]
+        ),
+        TableRow(
+          children: [
+            _createTile(),
+            _createTile(),
+          ]
+        )
+      ],
+    );
+  }
+
+  Widget _createTile() {
+    return Container(
+      height: 180.0,
+      margin: EdgeInsets.all(15.0),
+      decoration: BoxDecoration(
+        color: Color.fromRGBO(62, 66, 107, 0.7),
+        borderRadius: BorderRadius.circular(20.0),
+      ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: <Widget>[
+          SizedBox(height: 5.0,),
+          CircleAvatar(
+            backgroundColor: Colors.pinkAccent,
+            radius: 35.0,
+            child: Icon(Icons.swap_calls, color: Colors.white, size: 30.0,),
+          ),
+          Text("hola", style: TextStyle(color: Colors.pinkAccent),),
+          SizedBox(height: 5.0,),
+        ],
+      ),
+    );
+  }
 }
